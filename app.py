@@ -38,7 +38,7 @@ def load_pages():
         st.text('Select a page in the sidebar')
         st.write("")
         st.write("Note : These charts are best to view in bigger screens")
-        st.write("The interactive charts are created using plotly and the devlopment of user interface is done with streamlit nd deployed in heroku")
+        st.write("The interactive charts are created using plotly and the devlopment of user interface is done with streamlit and deployed in heroku")
 
     elif page == '1-Bahrain GP':
         st.markdown("""# Formula 1 - Bahrain Grand Prix  2021 at Bahrain International Circuit, Sakhir""")
