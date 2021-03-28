@@ -38,7 +38,7 @@ def load_pages():
         st.text('Select a page in the sidebar')
         st.write("")
         st.write("Note : These charts are best to view in bigger screens")
-        st.write("The interactive charts are created using plotly and the devlopment of user interface is done with streamlit and deployed in heroku")
+        st.write("The interactive charts are created using plotly and the devlopment of user interface is done with streamlit nd deployed in heroku")
 
     elif page == '1-Bahrain GP':
         st.markdown("""# Formula 1 - Bahrain Grand Prix  2021 at Bahrain International Circuit, Sakhir""")
@@ -66,13 +66,14 @@ def load_pages():
                 else:
                     load_plots(df_r1P3,True,sectorno)
         elif testdayno == "Main Race":
+            sectorno = get_sector()
             if df_r1M.empty:
                 st.write("Session Data is not available.")
             else:
                 #st.write(df_r1M.describe())                
                 load_toptennracefinsh(df_r1M,sectorno)
-                load_plot2(df_r1M,0,60,100,170)
-                load_plot3(df_r1M,95,115)
+                load_plot2(df_r1M,0,60,85,170)
+                load_plot3(df_r1M,90,105)
         else:
             st.write("Session Data is not available.")
 
