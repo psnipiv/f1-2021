@@ -5,7 +5,6 @@ import json
 import sys
 import matplotlib.pyplot as plt
 import plotly.express as px
-import plotly.graph_objects as go
 import seaborn as sns
 import math
 
@@ -20,7 +19,19 @@ def main():
 
 
 def load_pages():
+    # Race 1 Data
+    df_r1M = load_data_session('r1M')
+    df_r1P1 = load_data_session('r1P1')
+    df_r1P2 = load_data_session('r1P2')
+    df_r1P3 = load_data_session('r1P3')
 
+    # Race 2 Data
+    df_r2M = load_data_session('r2M')
+    df_r2P1 = load_data_session('r2P1')
+    df_r2P2 = load_data_session('r2P2')
+    df_r2P3 = load_data_session('r2P3')
+    
+    
     sidebar_dropdownlist = ['Home Page',"2-Imola GP","1-Bahrain GP"]
     page = st.sidebar.selectbox("Choose a page", sidebar_dropdownlist)
 
@@ -36,15 +47,11 @@ def load_pages():
         st.write("The interactive charts are created using plotly and the devlopment of user interface is done with streamlit nd deployed in heroku")
 
     elif page == '1-Bahrain GP':
-        # Race 1 Data
-        df_r1M = load_data_session('r1M')
-        df_r1P1 = load_data_session('r1P1')
-        df_r1P2 = load_data_session('r1P2')
-        df_r1P3 = load_data_session('r1P3')
         st.markdown("""# Formula 1 - Bahrain Grand Prix  2021 at Bahrain International Circuit, Sakhir""")
         # SelectBox
         testdayno = st.selectbox("Select Session",["Practice","Main Race"])
         st.write("On ", testdayno)
+
         if testdayno == "Practice":
             readme_text = st.markdown(read_markdown("1-Practice.md"))            
             sessionno = st.radio("Select Practice session",("Practice 1","Practice 2","Practice 3"))
@@ -77,11 +84,6 @@ def load_pages():
             st.write("Session Data is not available.")
 
     elif page == '2-Imola GP':
-        # Race 2 Data
-        df_r2M = load_data_session('r2M')
-        df_r2P1 = load_data_session('r2P1')
-        df_r2P2 = load_data_session('r2P2')
-        df_r2P3 = load_data_session('r2P3')
         st.markdown("""# Formula 1 - Emilia Romagna Grand Prix at Autodromo Enzo e Dino Ferrari, Italy""")
         # SelectBox
         testdayno = st.selectbox("Select Session",["Practice","Main Race"])
@@ -205,7 +207,6 @@ def load_data_session(session):
     return data
 
 def load_plot1(df,startlap,endlap,mintime,maxtime,sectorno):
-    st.markdown("""#### Lap time clocked and trendline during the session """)
     df = df.sort_values(['N'],ascending=[1])
     color_dict = dict(zip(df.NAME, df.COLORCODE))
     fig = px.scatter(df, x="LAPS", y=sectorno, color="NAME",template="ggplot2",width=1200,height=600, hover_name="TYRE",trendline="lowess",color_discrete_map=color_dict)
@@ -215,7 +216,6 @@ def load_plot1(df,startlap,endlap,mintime,maxtime,sectorno):
     st.plotly_chart(fig)
 
 def load_plot2(df,startlap,endlap,mintime,maxtime):
-    st.markdown("""#### Lap time clocked and trendline during the session """)
     df = df.sort_values(['N'],ascending=[1])
     color_dict = dict(zip(df.DRIVERCODE, df.COLORCODE))
     fig = px.scatter(df, x="LAPNO", y="S123", color="DRIVERCODE",template="ggplot2",width=1200,height=600, hover_name="TYRE",trendline="lowess",color_discrete_map=color_dict)
@@ -225,16 +225,14 @@ def load_plot2(df,startlap,endlap,mintime,maxtime):
     st.plotly_chart(fig)
 
 def load_plot3(df,mintime,maxtime):
-    st.markdown("""#### Heatmap which provides an overview of the push laps during the race""")
     df = df.sort_values(['N'],ascending=[1])
+    sns.set(style="darkgrid")
+    st.text('Heatmap that indicate the total sector time for the main race. This gives an overview of push laps during the stint.')
     dataset = df.pivot("LAPNO", "DRIVERCODE", "S123")
-    fig = go.Figure(data=go.Heatmap(df_to_plotly(dataset),colorscale='speed',hovertemplate='Driver Code: %{x}<br>Lap No.: %{y}<br>Lap Time: %{z}<extra></extra>'))
-    fig.update_layout(
-    xaxis=dict(title = "Driver Code"),
-    yaxis=dict(tickmode = 'linear',tick0 = 0,dtick = 1,title = "Lap No."),showlegend = True,width = 1200, height = 1000,autosize = True,yaxis_autorange='reversed'
-    )
-    fig.data[0].update(zmin=mintime, zmax=maxtime)
-    st.plotly_chart(fig)
+    f, ax = plt.subplots(figsize=(25, 25))
+    sns.heatmap(dataset, annot=True, cmap="cubehelix",vmin=mintime, vmax=maxtime, linewidths=0.5, fmt='g')
+    sns.despine(left=True, bottom=True)
+    st.pyplot()
 
 def load_plot4(df,mintime,maxtime,sectorno):
     df = df.sort_values(['N'],ascending=[1])
@@ -295,10 +293,6 @@ def get_colorcode():
     colorcodedf = pd.read_csv('ColorCodes.csv',index_col=False,header=0)
     return colorcodedf
 
-def df_to_plotly(df):
-    return {'z': df.values.tolist(),
-            'x': df.columns.tolist(),
-            'y': df.index.tolist()}
 
 def _set_block_container_style(max_width: int = 1200,max_width_100_percent: bool = False,padding_top: int = 5,padding_right: int = 1,padding_left: int = 1,padding_bottom: int = 10):
     if max_width_100_percent:
