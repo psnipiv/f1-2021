@@ -192,10 +192,10 @@ def load_pages():
             if df_r4M.empty:
                 st.write("Session Data is not available.")
             else:
-                #st.write(df_r3M.describe())                
+                st.write(df_r4M.describe())                
                 load_toptennracefinsh(df_r4M,sectorno)
-                load_plot2(df_r3M,0,70,55,145)
-                load_plot3(df_r3M,77,100)
+                load_plot2(df_r4M,0,70,55,145)
+                load_plot3(df_r4M,77,100)
         else:
             st.write("Session Data is not available.")
 
