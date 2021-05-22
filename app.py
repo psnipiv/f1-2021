@@ -18,7 +18,7 @@ def main():
 
 def load_pages():
 
-    sidebar_dropdownlist = ['Home Page','4-Spain GP','3-Portugal GP',"2-Imola GP","1-Bahrain GP"]
+    sidebar_dropdownlist = ['Home Page','5-Monaco GP','4-Spain GP','3-Portugal GP',"2-Imola GP","1-Bahrain GP"]
     page = st.sidebar.selectbox("Choose a page", sidebar_dropdownlist)
 
     if page == 'Home Page':
@@ -38,7 +38,7 @@ def load_pages():
         df_r1P1 = load_data_session('r1P1')
         df_r1P2 = load_data_session('r1P2')
         df_r1P3 = load_data_session('r1P3')
-        st.markdown("""# Formula 1 - Bahrain Grand Prix  2021 at Bahrain International Circuit, Sakhir""")
+        st.markdown("""# Formula 1 - Bahrain Grand Prix  2021""")
         # SelectBox
         testdayno = st.selectbox("Select Session",["Practice","Main Race"])
         st.write("On ", testdayno)
@@ -79,7 +79,7 @@ def load_pages():
         df_r2P1 = load_data_session('r2P1')
         df_r2P2 = load_data_session('r2P2')
         df_r2P3 = load_data_session('r2P3')
-        st.markdown("""# Formula 1 - Emilia Romagna Grand Prix at Autodromo Enzo e Dino Ferrari, Italy""")
+        st.markdown("""# Formula 1 - Emilia Romagna Grand Prix 2021""")
         # SelectBox
         testdayno = st.selectbox("Select Session",["Practice","Main Race"])
         st.write("On ", testdayno)
@@ -121,7 +121,7 @@ def load_pages():
         df_r3P1 = load_data_session('r3P1')
         df_r3P2 = load_data_session('r3P2')
         df_r3P3 = load_data_session('r3P3')
-        st.markdown("""# Formula 1 - Grande Prémio de Portugal at Algarve International Circuit, Portugal""")
+        st.markdown("""# Formula 1 - Grande Prémio de Portugal 2021""")
         # SelectBox
         testdayno = st.selectbox("Select Session",["Practice","Main Race"])
         st.write("On ", testdayno)
@@ -163,7 +163,7 @@ def load_pages():
         df_r4P1 = load_data_session('r4P1')
         df_r4P2 = load_data_session('r4P2')
         df_r4P3 = load_data_session('r4P3')
-        st.markdown("""# Formula 1 - Spanish Grand Prix at Circuit de Barcelona-Catalunya, Spain""")
+        st.markdown("""# Formula 1 - Spanish Grand Prix 2021""")
         # SelectBox
         testdayno = st.selectbox("Select Session",["Practice","Main Race"])
         st.write("On ", testdayno)
@@ -198,6 +198,49 @@ def load_pages():
                 load_plot3(df_r4M,77,100)
         else:
             st.write("Session Data is not available.")
+
+    elif page == '5-Monaco GP':
+        # Race 4 Data
+        df_r5M = load_data_session('r5M')
+        df_r5P1 = load_data_session('r5P1')
+        df_r5P2 = load_data_session('r5P2')
+        df_r5P3 = load_data_session('r5P3')
+        st.markdown("""# Formula 1 Grand Prix De Monaco 2021""")
+        # SelectBox
+        testdayno = st.selectbox("Select Session",["Practice","Main Race"])
+        st.write("On ", testdayno)
+
+        if testdayno == "Practice":
+            readme_text = st.markdown(read_markdown("5-Practice.md"))            
+            sessionno = st.radio("Select Practice session",("Practice 1","Practice 2","Practice 3"))
+            sectorno = get_sector()
+            if sessionno =="Practice 1":
+                if df_r5P1.empty:
+                    st.write("Session Data is not available.")
+                else:
+                    load_plots(df_r5P1,True,sectorno)
+            elif sessionno =="Practice 2":
+                if df_r5P2.empty:
+                    st.write("Session Data is not available.")
+                else:
+                    load_plots(df_r5P2,True,sectorno)
+            elif sessionno =="Practice 3":
+                if df_r5P3.empty:
+                    st.write("Session Data is not available.")
+                else:
+                    load_plots(df_r5P3,True,sectorno)
+        elif testdayno == "Main Race":
+            sectorno = get_sector()
+            if df_r5M.empty:
+                st.write("Session Data is not available.")
+            else:
+                #st.write(df_r5M.describe())                
+                load_toptennracefinsh(df_r5M,sectorno)
+                load_plot2(df_r5M,0,80,55,170)
+                load_plot3(df_r5M,77,100)
+        else:
+            st.write("Session Data is not available.")
+
 
 
     else:
@@ -291,6 +334,14 @@ def load_data_session(session):
     elif session == 'r4M':
         sessionfile = '4-Final_MainRaceData.json'
 
+    elif session == 'r5P1':
+        sessionfile = '5-Final_Practice1Data.json'
+    elif session == 'r5P2':
+        sessionfile = '5-Final_Practice2Data.json'
+    elif session == 'r5P3':
+        sessionfile = '5-Final_Practice3Data.json'
+    elif session == 'r5M':
+        sessionfile = '5-Final_MainRaceData.json'
 
     colorcodedf = get_colorcode()
     if sessionfile != '':     
