@@ -1,0 +1,3 @@
+#### Formula 1 Azerbaijan Grand Prix 2021 at Baku City Circuit - Practice Session
+Baku is the newest street circuit on the Formula 1 calendar, joining the ranks of Monaco, Melbourne and Singapore.
+The street circuit at the windy city has a mixture of wide and open and tight and twisty. The characteristics of city circuits are that the corners are tight and a minor error will end up in the wall. Finding the right set up on the down force plus slip stream will play an important in the race.
