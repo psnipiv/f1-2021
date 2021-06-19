@@ -1,0 +1,5 @@
+#### Formula 1 Emirates Grand Prix De France 2021 at Circuit Paul Ricard - Practice Session
+Circuit Paul Ricard motorsport race track built in 1969 at Le Castellet, Var, near Marseille is one of the safest motor racing circuits in the world at the time of its opening.
+The track is known for its distinctive black and blue run-off areas known as the Blue Zone. The runoff surface consists of a mixture of asphalt and tungsten, used instead of gravel traps, as common at other circuits. A second, deeper run-off area is the Red Zone, with a more abrasive surface designed to maximize tyre grip and hence minimize braking distance, although at the cost of extreme tyre wear. The final safeguard consists of Tecpro barriers, a modern improvement on tyre barriers.
+
+Any slide to to these run-off areas may need a visit to the pitstop.
