@@ -363,7 +363,7 @@ def load_pages():
                 #st.write(df_r8M.describe())                
                 load_toptennracefinsh(df_r8M,sectorno)
                 load_plot2(df_r8M,0,75,50,150)
-                load_plot3(df_r8M,65,80)
+                load_plot3(df_r8M,65,75)
         else:
             st.write("Session Data is not available.")
 
@@ -405,7 +405,7 @@ def load_pages():
                 #st.write(df_r9M.describe())                
                 load_toptennracefinsh(df_r9M,sectorno)
                 load_plot2(df_r9M,0,75,50,150)
-                load_plot3(df_r9M,65,80)
+                load_plot3(df_r9M,65,75)
         else:
             st.write("Session Data is not available.")
 
