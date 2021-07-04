@@ -18,7 +18,7 @@ def main():
 
 def load_pages():
 
-    sidebar_dropdownlist = ['Home Page','8-Steiermark GP' ,'7-French GP','6-Baku GP','5-Monaco GP','4-Spain GP','3-Portugal GP',"2-Imola GP","1-Bahrain GP"]
+    sidebar_dropdownlist = ['Home Page','9-Austrian GP','8-Steiermark GP' ,'7-French GP','6-Baku GP','5-Monaco GP','4-Spain GP','3-Portugal GP',"2-Imola GP","1-Bahrain GP"]
     page = st.sidebar.selectbox("Choose a page", sidebar_dropdownlist)
 
     if page == 'Home Page':
@@ -200,7 +200,7 @@ def load_pages():
             st.write("Session Data is not available.")
 
     elif page == '5-Monaco GP':
-        # Race 4 Data
+        # Race 5 Data
         df_r5M = load_data_session('r5M')
         df_r5P1 = load_data_session('r5P1')
         df_r5P2 = load_data_session('r5P2')
@@ -242,7 +242,7 @@ def load_pages():
             st.write("Session Data is not available.")
             
     elif page == '6-Baku GP':
-        # Race 4 Data
+        # Race 6 Data
         df_r6M = load_data_session('r6M')
         df_r6P1 = load_data_session('r6P1')
         df_r6P2 = load_data_session('r6P2')
@@ -284,7 +284,7 @@ def load_pages():
             st.write("Session Data is not available.")
 
     elif page == '7-French GP':
-        # Race 4 Data
+        # Race 7 Data
         df_r7M = load_data_session('r7M')
         df_r7P1 = load_data_session('r7P1')
         df_r7P2 = load_data_session('r7P2')
@@ -326,7 +326,7 @@ def load_pages():
             st.write("Session Data is not available.")
 
     elif page == '8-Steiermark GP':
-        # Race 4 Data
+        # Race 48 Data
         df_r8M = load_data_session('r8M')
         df_r8P1 = load_data_session('r8P1')
         df_r8P2 = load_data_session('r8P2')
@@ -364,6 +364,48 @@ def load_pages():
                 load_toptennracefinsh(df_r8M,sectorno)
                 load_plot2(df_r8M,0,75,50,150)
                 load_plot3(df_r8M,65,80)
+        else:
+            st.write("Session Data is not available.")
+
+    elif page == '9-Austrian GP':
+        # Race 9 Data
+        df_r9M = load_data_session('r9M')
+        df_r9P1 = load_data_session('r9P1')
+        df_r9P2 = load_data_session('r9P2')
+        df_r9P3 = load_data_session('r9P3')
+        st.markdown("""# Formula 1 Austrian Grand Prix 2021""")
+        # SelectBox
+        testdayno = st.selectbox("Select Session",["Practice","Main Race"])
+        st.write("On ", testdayno)
+
+        if testdayno == "Practice":
+            readme_text = st.markdown(read_markdown("9-Practice.md"))            
+            sessionno = st.radio("Select Practice session",("Practice 1","Practice 2","Practice 3"))
+            sectorno = get_sector()
+            if sessionno =="Practice 1":
+                if df_r9P1.empty:
+                    st.write("Session Data is not available.")
+                else:
+                    load_plots(df_r9P1,True,sectorno)
+            elif sessionno =="Practice 2":
+                if df_r9P2.empty:
+                    st.write("Session Data is not available.")
+                else:
+                    load_plots(df_r9P2,True,sectorno)
+            elif sessionno =="Practice 3":
+                if df_r9P3.empty:
+                    st.write("Session Data is not available.")
+                else:
+                    load_plots(df_r9P3,True,sectorno)
+        elif testdayno == "Main Race":
+            sectorno = get_sector()
+            if df_r9M.empty:
+                st.write("Session Data is not available.")
+            else:
+                #st.write(df_r9M.describe())                
+                load_toptennracefinsh(df_r9M,sectorno)
+                load_plot2(df_r9M,0,75,50,150)
+                load_plot3(df_r9M,65,80)
         else:
             st.write("Session Data is not available.")
 
@@ -493,6 +535,15 @@ def load_data_session(session):
         sessionfile = '8-Final_Practice3Data.json'
     elif session == 'r8M':
         sessionfile = '8-Final_MainRaceData.json'
+
+    elif session == 'r9P1':
+        sessionfile = '9-Final_Practice1Data.json'
+    elif session == 'r9P2':
+        sessionfile = '9-Final_Practice2Data.json'
+    elif session == 'r9P3':
+        sessionfile = '9-Final_Practice3Data.json'
+    elif session == 'r9M':
+        sessionfile = '9-Final_MainRaceData.json'
 
     colorcodedf = get_colorcode()
     if sessionfile != '':     
