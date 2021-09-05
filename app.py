@@ -566,7 +566,7 @@ def load_pages():
         df_r13P3 = load_data_session('r13P3')
 
 
-        st.markdown("""# Formula 1 Belgian Grand Prix 2021""")
+        st.markdown("""# Formula 1 Dutch Grand Prix 2021""")
         # SelectBox
         testdayno = st.selectbox("Select Session",["Practice","Main Race"])
         st.write("On ", testdayno)
