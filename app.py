@@ -66,10 +66,16 @@ def load_pages():
             if df_r1M.empty:
                 st.write("Session Data is not available.")
             else:
-                #st.write(df_r1M.describe())                
+                #st.write(df_r1M.describe())
+                driver_list = sorted(df_r1M['NAME'].unique())
+                options = st.multiselect("Select driver",driver_list)
+                if options:
+                    mainrace1df =  df_r1M[df_r1M.NAME.isin(options)]
+                else:
+                    mainrace1df = df_r1M                 
                 load_toptennracefinsh(df_r1M,sectorno)
-                load_plot2(df_r1M,0,60,85,170)
-                load_plot3(df_r1M,90,105)
+                load_plot2(mainrace1df,0,60,85,170)
+                load_plot3(mainrace1df,90,105)
         else:
             st.write("Session Data is not available.")
 
@@ -108,10 +114,16 @@ def load_pages():
             if df_r2M.empty:
                 st.write("Session Data is not available.")
             else:
-                #st.write(df_r2M.describe())                
+                #st.write(df_r2M.describe())
+                driver_list = sorted(df_r2M['NAME'].unique())
+                options = st.multiselect("Select driver",driver_list)
+                if options:
+                    mainrace2df =  df_r2M[df_r2M.NAME.isin(options)]
+                else:
+                    mainrace2df = df_r2M   
                 load_toptennracefinsh(df_r2M,sectorno)
-                load_plot2(df_r2M,0,65,60,190)
-                load_plot3(df_r2M,75,95)
+                load_plot2(mainrace2df,0,65,60,190)
+                load_plot3(mainrace2df,75,95)
         else:
             st.write("Session Data is not available.")
 
@@ -150,10 +162,16 @@ def load_pages():
             if df_r3M.empty:
                 st.write("Session Data is not available.")
             else:
-                #st.write(df_r3M.describe())                
+                #st.write(df_r3M.describe())
+                driver_list = sorted(df_r3M['NAME'].unique())
+                options = st.multiselect("Select driver",driver_list)
+                if options:
+                    mainrace3df =  df_r3M[df_r3M.NAME.isin(options)]
+                else:
+                    mainrace3df = df_r3M        
                 load_toptennracefinsh(df_r3M,sectorno)
-                load_plot2(df_r3M,0,70,55,145)
-                load_plot3(df_r3M,77,100)
+                load_plot2(mainrace3df,0,70,55,145)
+                load_plot3(mainrace3df,77,100)
         else:
             st.write("Session Data is not available.")
 
@@ -192,10 +210,16 @@ def load_pages():
             if df_r4M.empty:
                 st.write("Session Data is not available.")
             else:
-                #st.write(df_r4M.describe())                
+                #st.write(df_r4M.describe())
+                driver_list = sorted(df_r4M['NAME'].unique())
+                options = st.multiselect("Select driver",driver_list)
+                if options:
+                    mainrace4df =  df_r4M[df_r4M.NAME.isin(options)]
+                else:
+                    mainrace4df = df_r4M
                 load_toptennracefinsh(df_r4M,sectorno)
-                load_plot2(df_r4M,0,70,55,170)
-                load_plot3(df_r4M,77,100)
+                load_plot2(mainrace4df,0,70,55,170)
+                load_plot3(mainrace4df,77,100)
         else:
             st.write("Session Data is not available.")
 
@@ -234,10 +258,16 @@ def load_pages():
             if df_r5M.empty:
                 st.write("Session Data is not available.")
             else:
-                #st.write(df_r5M.describe())                
+                #st.write(df_r5M.describe())
+                driver_list = sorted(df_r5M['NAME'].unique())
+                options = st.multiselect("Select driver",driver_list)
+                if options:
+                    mainrace5df =  df_r5M[df_r5M.NAME.isin(options)]
+                else:
+                    mainrace5df = df_r5M
                 load_toptennracefinsh(df_r5M,sectorno)
-                load_plot2(df_r5M,0,80,55,100)
-                load_plot3(df_r5M,75,80)
+                load_plot2(mainrace5df,0,80,55,100)
+                load_plot3(mainrace5df,75,80)
         else:
             st.write("Session Data is not available.")
             
@@ -276,10 +306,16 @@ def load_pages():
             if df_r6M.empty:
                 st.write("Session Data is not available.")
             else:
-                #st.write(df_r6M.describe())                
+                #st.write(df_r6M.describe())
+                driver_list = sorted(df_r6M['NAME'].unique())
+                options = st.multiselect("Select driver",driver_list)
+                if options:
+                    mainrace6df =  df_r6M[df_r6M.NAME.isin(options)]
+                else:
+                    mainrace6df = df_r6M
                 load_toptennracefinsh(df_r6M,sectorno)
-                load_plot2(df_r6M,0,55,70,200)
-                load_plot3(df_r6M,100,115)
+                load_plot2(mainrace6df,0,55,70,200)
+                load_plot3(mainrace6df,100,115)
         else:
             st.write("Session Data is not available.")
 
@@ -318,10 +354,16 @@ def load_pages():
             if df_r7M.empty:
                 st.write("Session Data is not available.")
             else:
-                #st.write(df_r7M.describe())                
+                #st.write(df_r7M.describe())
+                driver_list = sorted(df_r7M['NAME'].unique())
+                options = st.multiselect("Select driver",driver_list)
+                if options:
+                    mainrace7df =  df_r7M[df_r7M.NAME.isin(options)]
+                else:
+                    mainrace7df = df_r7M
                 load_toptennracefinsh(df_r7M,sectorno)
-                load_plot2(df_r7M,0,55,70,140)
-                load_plot3(df_r7M,95,105)
+                load_plot2(mainrace7df,0,55,70,140)
+                load_plot3(mainrace7df,95,105)
         else:
             st.write("Session Data is not available.")
 
@@ -360,10 +402,16 @@ def load_pages():
             if df_r8M.empty:
                 st.write("Session Data is not available.")
             else:
-                #st.write(df_r8M.describe())                
+                #st.write(df_r8M.describe())
+                driver_list = sorted(df_r8M['NAME'].unique())
+                options = st.multiselect("Select driver",driver_list)
+                if options:
+                    mainrace8df =  df_r8M[df_r8M.NAME.isin(options)]
+                else:
+                    mainrace8df = df_r8M                  
                 load_toptennracefinsh(df_r8M,sectorno)
-                load_plot2(df_r8M,0,75,50,150)
-                load_plot3(df_r8M,65,75)
+                load_plot2(mainrace8df,0,75,50,150)
+                load_plot3(mainrace8df,65,75)
         else:
             st.write("Session Data is not available.")
 
@@ -402,7 +450,13 @@ def load_pages():
             if df_r9M.empty:
                 st.write("Session Data is not available.")
             else:
-                #st.write(df_r9M.describe())                
+                #st.write(df_r9M.describe())
+                driver_list = sorted(df_r9M['NAME'].unique())
+                options = st.multiselect("Select driver",driver_list)
+                if options:
+                    mainrace9df =  df_r9M[df_r9M.NAME.isin(options)]
+                else:
+                    mainrace9df = df_r9M               
                 load_toptennracefinsh(df_r9M,sectorno)
                 load_plot2(df_r9M,0,75,50,150)
                 load_plot3(df_r9M,65,75)
@@ -444,10 +498,16 @@ def load_pages():
             if df_r11M.empty:
                 st.write("Session Data is not available.")
             else:
-                #st.write(df_r11M.describe())                
+                #st.write(df_r11M.describe())
+                driver_list = sorted(df_r11M['NAME'].unique())
+                options = st.multiselect("Select driver",driver_list)
+                if options:
+                    mainrace11df =  df_r11M[df_r11M.NAME.isin(options)]
+                else:
+                    mainrace11df = df_r11M                   
                 load_toptennracefinsh(df_r11M,sectorno)
-                load_plot2(df_r11M,0,75,75,180)
-                load_plot3(df_r11M,75,90)
+                load_plot2(mainrace11df,0,75,75,180)
+                load_plot3(mainrace11df,75,90)
 
     elif page == '12-Belgian GP':
         # Race 12 Data
@@ -484,10 +544,16 @@ def load_pages():
             if df_r12M.empty:
                 st.write("Session Data is not available.")
             else:
-                #st.write(df_r12M.describe())                
+                #st.write(df_r12M.describe())
+                driver_list = sorted(df_r12M['NAME'].unique())
+                options = st.multiselect("Select driver",driver_list)
+                if options:
+                    mainrace12df =  df_r12M[df_r12M.NAME.isin(options)]
+                else:
+                    mainrace12df = df_r12M         
                 load_toptennracefinsh(df_r12M,sectorno)
-                load_plot2(df_r12M,0,45,75,250)
-                load_plot3(df_r12M,170,230)
+                load_plot2(mainrace12df,0,45,75,250)
+                load_plot3(mainrace12df,170,230)
 
         else:
             st.write("Session Data is not available.")
@@ -498,6 +564,8 @@ def load_pages():
         df_r13P1 = load_data_session('r13P1')
         df_r13P2 = load_data_session('r13P2')
         df_r13P3 = load_data_session('r13P3')
+
+
         st.markdown("""# Formula 1 Belgian Grand Prix 2021""")
         # SelectBox
         testdayno = st.selectbox("Select Session",["Practice","Main Race"])
@@ -527,10 +595,16 @@ def load_pages():
             if df_r13M.empty:
                 st.write("Session Data is not available.")
             else:
-                #st.write(df_r13M.describe())                
+                #st.write(df_r13M.describe())
+                driver_list = sorted(df_r13M['NAME'].unique())
+                options = st.multiselect("Select driver",driver_list)
+                if options:
+                    mainrace13df =  df_r13M[df_r13M.NAME.isin(options)]
+                else:
+                    mainrace13df = df_r13M
                 load_toptennracefinsh(df_r13M,sectorno)
-                load_plot2(df_r13M,0,45,75,250)
-                load_plot3(df_r13M,170,230)
+                load_plot2(mainrace13df,0,75,45,125)
+                load_plot3(mainrace13df,70,85)
 
         else:
             st.write("Session Data is not available.")
