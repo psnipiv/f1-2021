@@ -18,7 +18,7 @@ def main():
 
 def load_pages():
 
-    sidebar_dropdownlist = ['Home Page','12-Belgian GP','11-Hungarian GP','9-Austrian GP','8-Steiermark GP' ,'7-French GP','6-Baku GP','5-Monaco GP','4-Spain GP','3-Portugal GP',"2-Imola GP","1-Bahrain GP"]
+    sidebar_dropdownlist = ['Home Page','13-Dutch GP','12-Belgian GP','11-Hungarian GP','9-Austrian GP','8-Steiermark GP' ,'7-French GP','6-Baku GP','5-Monaco GP','4-Spain GP','3-Portugal GP',"2-Imola GP","1-Bahrain GP"]
     page = st.sidebar.selectbox("Choose a page", sidebar_dropdownlist)
 
     if page == 'Home Page':
@@ -486,8 +486,51 @@ def load_pages():
             else:
                 #st.write(df_r12M.describe())                
                 load_toptennracefinsh(df_r12M,sectorno)
-                load_plot2(df_r12M,0,45,75,180)
-                load_plot3(df_r12M,75,90)
+                load_plot2(df_r12M,0,45,75,250)
+                load_plot3(df_r12M,170,230)
+
+        else:
+            st.write("Session Data is not available.")
+
+    elif page == '13-Dutch GP':
+        # Race 12 Data
+        df_r13M = load_data_session('r13M')
+        df_r13P1 = load_data_session('r13P1')
+        df_r13P2 = load_data_session('r13P2')
+        df_r13P3 = load_data_session('r13P3')
+        st.markdown("""# Formula 1 Belgian Grand Prix 2021""")
+        # SelectBox
+        testdayno = st.selectbox("Select Session",["Practice","Main Race"])
+        st.write("On ", testdayno)
+
+        if testdayno == "Practice":
+            readme_text = st.markdown(read_markdown("13-Practice.md"))            
+            sessionno = st.radio("Select Practice session",("Practice 1","Practice 2","Practice 3"))
+            sectorno = get_sector()
+            if sessionno =="Practice 1":
+                if df_r13P1.empty:
+                    st.write("Session Data is not available.")
+                else:
+                    load_plots(df_r13P1,True,sectorno)
+            elif sessionno =="Practice 2":
+                if df_r13P2.empty:
+                    st.write("Session Data is not available.")
+                else:
+                    load_plots(df_r13P2,True,sectorno)
+            elif sessionno =="Practice 3":
+                if df_r13P3.empty:
+                    st.write("Session Data is not available.")
+                else:
+                    load_plots(df_r13P3,True,sectorno)
+        elif testdayno == "Main Race":
+            sectorno = get_sector()
+            if df_r13M.empty:
+                st.write("Session Data is not available.")
+            else:
+                #st.write(df_r13M.describe())                
+                load_toptennracefinsh(df_r13M,sectorno)
+                load_plot2(df_r13M,0,45,75,250)
+                load_plot3(df_r13M,170,230)
 
         else:
             st.write("Session Data is not available.")
@@ -645,6 +688,15 @@ def load_data_session(session):
         sessionfile = '12-Final_Practice3Data.json'
     elif session == 'r12M':
         sessionfile = '12-Final_MainRaceData.json'
+
+    elif session == 'r13P1':
+        sessionfile = '13-Final_Practice1Data.json'
+    elif session == 'r13P2':
+        sessionfile = '13-Final_Practice2Data.json'
+    elif session == 'r13P3':
+        sessionfile = '13-Final_Practice3Data.json'
+    elif session == 'r13M':
+        sessionfile = '13-Final_MainRaceData.json'
 
     colorcodedf = get_colorcode()
     if sessionfile != '':     
