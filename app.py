@@ -18,7 +18,7 @@ def main():
 
 def load_pages():
 
-    sidebar_dropdownlist = ['Home Page','13-Dutch GP','12-Belgian GP','11-Hungarian GP','9-Austrian GP','8-Steiermark GP' ,'7-French GP','6-Baku GP','5-Monaco GP','4-Spain GP','3-Portugal GP',"2-Imola GP","1-Bahrain GP"]
+    sidebar_dropdownlist = ['Home Page','14-Italian GP','13-Dutch GP','12-Belgian GP','11-Hungarian GP','9-Austrian GP','8-Steiermark GP' ,'7-French GP','6-Baku GP','5-Monaco GP','4-Spain GP','3-Portugal GP',"2-Imola GP","1-Bahrain GP"]
     page = st.sidebar.selectbox("Choose a page", sidebar_dropdownlist)
 
     if page == 'Home Page':
@@ -38,12 +38,13 @@ def load_pages():
         df_r1P1 = load_data_session('r1P1')
         df_r1P2 = load_data_session('r1P2')
         df_r1P3 = load_data_session('r1P3')
-        st.markdown("""# Formula 1 - Bahrain Grand Prix  2021""")
+        st.markdown("""# Formula 1 - Bahrain Grand Prix  2021\n""")
+        st.markdown(read_markdown("1-Practice.md"))    
+
         # SelectBox
         testdayno = st.selectbox("Select Session",["Practice","Main Race"])
         st.write("On ", testdayno)
-        if testdayno == "Practice":
-            readme_text = st.markdown(read_markdown("1-Practice.md"))            
+        if testdayno == "Practice":        
             sessionno = st.radio("Select Practice session",("Practice 1","Practice 2","Practice 3"))
             sectorno = get_sector()
             if sessionno =="Practice 1":
@@ -85,13 +86,14 @@ def load_pages():
         df_r2P1 = load_data_session('r2P1')
         df_r2P2 = load_data_session('r2P2')
         df_r2P3 = load_data_session('r2P3')
-        st.markdown("""# Formula 1 - Emilia Romagna Grand Prix 2021""")
+        st.markdown("""# Formula 1 - Emilia Romagna Grand Prix 2021\n""")
+        st.markdown(read_markdown("2-Practice.md"))
+
         # SelectBox
         testdayno = st.selectbox("Select Session",["Practice","Main Race"])
         st.write("On ", testdayno)
 
-        if testdayno == "Practice":
-            readme_text = st.markdown(read_markdown("2-Practice.md"))            
+        if testdayno == "Practice":        
             sessionno = st.radio("Select Practice session",("Practice 1","Practice 2","Practice 3"))
             sectorno = get_sector()
             if sessionno =="Practice 1":
@@ -133,13 +135,14 @@ def load_pages():
         df_r3P1 = load_data_session('r3P1')
         df_r3P2 = load_data_session('r3P2')
         df_r3P3 = load_data_session('r3P3')
-        st.markdown("""# Formula 1 - Grande Prémio de Portugal 2021""")
+        st.markdown("""# Formula 1 - Grande Prémio de Portugal 2021\n""")
+        st.markdown(read_markdown("3-Practice.md"))   
+
         # SelectBox
         testdayno = st.selectbox("Select Session",["Practice","Main Race"])
         st.write("On ", testdayno)
 
-        if testdayno == "Practice":
-            readme_text = st.markdown(read_markdown("3-Practice.md"))            
+        if testdayno == "Practice":         
             sessionno = st.radio("Select Practice session",("Practice 1","Practice 2","Practice 3"))
             sectorno = get_sector()
             if sessionno =="Practice 1":
@@ -181,13 +184,14 @@ def load_pages():
         df_r4P1 = load_data_session('r4P1')
         df_r4P2 = load_data_session('r4P2')
         df_r4P3 = load_data_session('r4P3')
-        st.markdown("""# Formula 1 - Spanish Grand Prix 2021""")
+        st.markdown("""# Formula 1 - Spanish Grand Prix 2021\n""")
+        st.markdown(read_markdown("4-Practice.md"))    
+
         # SelectBox
         testdayno = st.selectbox("Select Session",["Practice","Main Race"])
         st.write("On ", testdayno)
 
-        if testdayno == "Practice":
-            readme_text = st.markdown(read_markdown("4-Practice.md"))            
+        if testdayno == "Practice":        
             sessionno = st.radio("Select Practice session",("Practice 1","Practice 2","Practice 3"))
             sectorno = get_sector()
             if sessionno =="Practice 1":
@@ -229,13 +233,14 @@ def load_pages():
         df_r5P1 = load_data_session('r5P1')
         df_r5P2 = load_data_session('r5P2')
         df_r5P3 = load_data_session('r5P3')
-        st.markdown("""# Formula 1 Grand Prix De Monaco 2021""")
+        st.markdown("""# Formula 1 Grand Prix De Monaco 2021\n""")
+        st.markdown(read_markdown("5-Practice.md"))
+
         # SelectBox
         testdayno = st.selectbox("Select Session",["Practice","Main Race"])
         st.write("On ", testdayno)
 
-        if testdayno == "Practice":
-            readme_text = st.markdown(read_markdown("5-Practice.md"))            
+        if testdayno == "Practice":      
             sessionno = st.radio("Select Practice session",("Practice 1","Practice 2","Practice 3"))
             sectorno = get_sector()
             if sessionno =="Practice 1":
@@ -277,13 +282,14 @@ def load_pages():
         df_r6P1 = load_data_session('r6P1')
         df_r6P2 = load_data_session('r6P2')
         df_r6P3 = load_data_session('r6P3')
-        st.markdown("""# Formula 1 Azerbaijan Grand Prix 2021""")
+        st.markdown("""# Formula 1 Azerbaijan Grand Prix 2021\n""")
+        st.markdown(read_markdown("6-Practice.md"))
+
         # SelectBox
         testdayno = st.selectbox("Select Session",["Practice","Main Race"])
         st.write("On ", testdayno)
 
-        if testdayno == "Practice":
-            readme_text = st.markdown(read_markdown("6-Practice.md"))            
+        if testdayno == "Practice":    
             sessionno = st.radio("Select Practice session",("Practice 1","Practice 2","Practice 3"))
             sectorno = get_sector()
             if sessionno =="Practice 1":
@@ -325,13 +331,14 @@ def load_pages():
         df_r7P1 = load_data_session('r7P1')
         df_r7P2 = load_data_session('r7P2')
         df_r7P3 = load_data_session('r7P3')
-        st.markdown("""# Formula 1 French Grand Prix 2021""")
+        st.markdown("""# Formula 1 French Grand Prix 2021\n""")
+        st.markdown(read_markdown("7-Practice.md"))     
+
         # SelectBox
         testdayno = st.selectbox("Select Session",["Practice","Main Race"])
         st.write("On ", testdayno)
 
-        if testdayno == "Practice":
-            readme_text = st.markdown(read_markdown("7-Practice.md"))            
+        if testdayno == "Practice":       
             sessionno = st.radio("Select Practice session",("Practice 1","Practice 2","Practice 3"))
             sectorno = get_sector()
             if sessionno =="Practice 1":
@@ -373,13 +380,13 @@ def load_pages():
         df_r8P1 = load_data_session('r8P1')
         df_r8P2 = load_data_session('r8P2')
         df_r8P3 = load_data_session('r8P3')
-        st.markdown("""# Formula 1 Steiermark Grand Prix 2021""")
+        st.markdown("""# Formula 1 Steiermark Grand Prix 2021\n""")
+        st.markdown(read_markdown("8-Practice.md"))     
         # SelectBox
         testdayno = st.selectbox("Select Session",["Practice","Main Race"])
         st.write("On ", testdayno)
 
-        if testdayno == "Practice":
-            readme_text = st.markdown(read_markdown("8-Practice.md"))            
+        if testdayno == "Practice":       
             sessionno = st.radio("Select Practice session",("Practice 1","Practice 2","Practice 3"))
             sectorno = get_sector()
             if sessionno =="Practice 1":
@@ -421,13 +428,14 @@ def load_pages():
         df_r9P1 = load_data_session('r9P1')
         df_r9P2 = load_data_session('r9P2')
         df_r9P3 = load_data_session('r9P3')
-        st.markdown("""# Formula 1 Austrian Grand Prix 2021""")
+        st.markdown("""# Formula 1 Austrian Grand Prix 2021\n""")
+        st.markdown(read_markdown("9-Practice.md"))     
+
         # SelectBox
         testdayno = st.selectbox("Select Session",["Practice","Main Race"])
         st.write("On ", testdayno)
 
-        if testdayno == "Practice":
-            readme_text = st.markdown(read_markdown("9-Practice.md"))            
+        if testdayno == "Practice":       
             sessionno = st.radio("Select Practice session",("Practice 1","Practice 2","Practice 3"))
             sectorno = get_sector()
             if sessionno =="Practice 1":
@@ -469,13 +477,14 @@ def load_pages():
         df_r11P1 = load_data_session('r11P1')
         df_r11P2 = load_data_session('r11P2')
         df_r11P3 = load_data_session('r11P3')
-        st.markdown("""# Formula 1 Hungarian Grand Prix 2021""")
+        st.markdown("""# Formula 1 Hungarian Grand Prix 2021\n""")
+        st.markdown(read_markdown("11-Practice.md"))
+
         # SelectBox
         testdayno = st.selectbox("Select Session",["Practice","Main Race"])
         st.write("On ", testdayno)
 
-        if testdayno == "Practice":
-            readme_text = st.markdown(read_markdown("11-Practice.md"))            
+        if testdayno == "Practice":       
             sessionno = st.radio("Select Practice session",("Practice 1","Practice 2","Practice 3"))
             sectorno = get_sector()
             if sessionno =="Practice 1":
@@ -515,13 +524,14 @@ def load_pages():
         df_r12P1 = load_data_session('r12P1')
         df_r12P2 = load_data_session('r12P2')
         df_r12P3 = load_data_session('r12P3')
-        st.markdown("""# Formula 1 Belgian Grand Prix 2021""")
+        st.markdown("""# Formula 1 Belgian Grand Prix 2021\n""")
+        st.markdown(read_markdown("12-Practice.md"))
+
         # SelectBox
         testdayno = st.selectbox("Select Session",["Practice","Main Race"])
         st.write("On ", testdayno)
 
-        if testdayno == "Practice":
-            readme_text = st.markdown(read_markdown("12-Practice.md"))            
+        if testdayno == "Practice":         
             sessionno = st.radio("Select Practice session",("Practice 1","Practice 2","Practice 3"))
             sectorno = get_sector()
             if sessionno =="Practice 1":
@@ -559,18 +569,20 @@ def load_pages():
             st.write("Session Data is not available.")
 
     elif page == '13-Dutch GP':
-        # Race 12 Data
+        # Race 13 Data
         df_r13M = load_data_session('r13M')
         df_r13P1 = load_data_session('r13P1')
         df_r13P2 = load_data_session('r13P2')
         df_r13P3 = load_data_session('r13P3')
-        st.markdown("""# Formula 1 Dutch Grand Prix 2021""")
+        st.markdown("""# Formula 1 Dutch Grand Prix 2021\n""")
+        st.markdown(read_markdown("13-Practice.md"))     
+
         # SelectBox
         testdayno = st.selectbox("Select Session",["Practice","Main Race"])
         st.write("On ", testdayno)
 
         if testdayno == "Practice":
-            readme_text = st.markdown(read_markdown("13-Practice.md"))            
+       
             sessionno = st.radio("Select Practice session",("Practice 1","Practice 2","Practice 3"))
             sectorno = get_sector()
             if sessionno =="Practice 1":
@@ -603,7 +615,57 @@ def load_pages():
                 load_toptennracefinsh(df_r13M,sectorno)
                 load_plot2(mainrace13df,0,75,45,125)
                 load_plot3(mainrace13df,70,85)
+                
+        else:
+            st.write("Session Data is not available.")
 
+    elif page == '14-Italian GP':
+        # Race 14 Data
+        df_r14M = load_data_session('r14M')
+        df_r14P1 = load_data_session('r14P1')
+        df_r14P2 = load_data_session('r14P2')
+        df_r14P3 = load_data_session('r14P3')
+        st.markdown("""# Formula 1 Italian Grand Prix 2021 \n""")
+        st.markdown(read_markdown("14-Practice.md"))
+
+        # SelectBox
+        testdayno = st.selectbox("Select Session",["Practice","Main Race"])
+        st.write("On ", testdayno)
+
+        if testdayno == "Practice":       
+            sessionno = st.radio("Select Practice session",("Practice 1","Practice 2","Practice 3"))
+            sectorno = get_sector()
+            if sessionno =="Practice 1":
+                if df_r14P1.empty:
+                    st.write("Session Data is not available.")
+                else:
+                    load_plots(df_r14P1,True,sectorno)
+            elif sessionno =="Practice 2":
+                if df_r14P2.empty:
+                    st.write("Session Data is not available.")
+                else:
+                    load_plots(df_r14P2,True,sectorno)
+            elif sessionno =="Practice 3":
+                if df_r14P3.empty:
+                    st.write("Session Data is not available.")
+                else:
+                    load_plots(df_r14P3,True,sectorno)
+        elif testdayno == "Main Race":
+            sectorno = get_sector()
+            if df_r14M.empty:
+                st.write("Session Data is not available.")
+            else:
+                #st.write(df_r14M.describe())
+                driver_list = sorted(df_r14M['NAME'].unique())
+                options = st.multiselect("Select driver",driver_list)
+                if options:
+                    mainrace14df =  df_r14M[df_r14M.NAME.isin(options)]
+                else:
+                    mainrace14df = df_r14M
+                load_toptennracefinsh(df_r14M,sectorno)
+                load_plot2(mainrace14df,0,55,45,125)
+                load_plot3(mainrace14df,70,85)
+                
         else:
             st.write("Session Data is not available.")
 
@@ -769,6 +831,15 @@ def load_data_session(session):
         sessionfile = '13-Final_Practice3Data.json'
     elif session == 'r13M':
         sessionfile = '13-Final_MainRaceData.json'
+
+    elif session == 'r14P1':
+        sessionfile = '14-Final_Practice1Data.json'
+    elif session == 'r14P2':
+        sessionfile = '14-Final_Practice2Data.json'
+    elif session == 'r14P3':
+        sessionfile = '14-Final_Practice3Data.json'
+    elif session == 'r14M':
+        sessionfile = '14-Final_MainRaceData.json'
 
     colorcodedf = get_colorcode()
     if sessionfile != '':     
