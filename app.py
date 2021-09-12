@@ -621,6 +621,7 @@ def load_pages():
 
     elif page == '14-Italian GP':
         # Race 14 Data
+        df_r14R = load_data_session('r14R')
         df_r14M = load_data_session('r14M')
         df_r14P1 = load_data_session('r14P1')
         df_r14P2 = load_data_session('r14P2')
@@ -629,7 +630,7 @@ def load_pages():
         st.markdown(read_markdown("14-Practice.md"))
 
         # SelectBox
-        testdayno = st.selectbox("Select Session",["Practice","Main Race"])
+        testdayno = st.selectbox("Select Session",["Practice","Sprint Race","Main Race"])
         st.write("On ", testdayno)
 
         if testdayno == "Practice":       
@@ -650,6 +651,21 @@ def load_pages():
                     st.write("Session Data is not available.")
                 else:
                     load_plots(df_r14P3,True,sectorno)
+        elif testdayno == "Sprint Race":
+            sectorno = get_sector()
+            if df_r14R.empty:
+                st.write("Session Data is not available.")
+            else:
+                #st.write(df_r14R.describe())
+                driver_list = sorted(df_r14R['NAME'].unique())
+                options = st.multiselect("Select driver",driver_list)
+                if options:
+                    sprintrace14df =  df_r14R[df_r14R.NAME.isin(options)]
+                else:
+                    sprintrace14df = df_r14R
+                load_toptennracefinsh(df_r14R,sectorno)
+                load_plot2(sprintrace14df,0,20,50,165)
+                load_plot3(sprintrace14df,80,90)
         elif testdayno == "Main Race":
             sectorno = get_sector()
             if df_r14M.empty:
@@ -663,8 +679,8 @@ def load_pages():
                 else:
                     mainrace14df = df_r14M
                 load_toptennracefinsh(df_r14M,sectorno)
-                load_plot2(mainrace14df,0,55,45,125)
-                load_plot3(mainrace14df,70,85)
+                load_plot2(mainrace14df,0,55,65,160)
+                load_plot3(mainrace14df,80,95)
                 
         else:
             st.write("Session Data is not available.")
@@ -840,6 +856,8 @@ def load_data_session(session):
         sessionfile = '14-Final_Practice3Data.json'
     elif session == 'r14M':
         sessionfile = '14-Final_MainRaceData.json'
+    elif session == 'r14R':
+        sessionfile = '14-Final_SprintRaceData.json'
 
     colorcodedf = get_colorcode()
     if sessionfile != '':     
@@ -881,7 +899,7 @@ def load_plot3(df,mintime,maxtime):
     fig = go.Figure(data=go.Heatmap(df_to_plotly(dataset),colorscale='speed',hovertemplate='Driver Code: %{x}<br>Lap No.: %{y}<br>Lap Time: %{z}<extra></extra>'))
     fig.update_layout(
     xaxis=dict(title = "Driver Code"),
-    yaxis=dict(tickmode = 'linear',tick0 = 0,dtick = 1,title = "Lap No."),showlegend = True,width = 1200, height = 1000,autosize = True,yaxis_autorange='reversed'
+    yaxis=dict(tickmode = 'linear',tick0 = 0,dtick = 1,title = "Lap No."),showlegend = True,width = 1000, height = 1200,autosize = True,yaxis_autorange='reversed'
     )
     fig.data[0].update(zmin=mintime, zmax=maxtime)
     st.plotly_chart(fig)
